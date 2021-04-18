@@ -6,17 +6,17 @@ from os import path
 options = ["scissors", "paper", "stone"]
 
 #Writes score of game in excel sheet
-def writeExcelSheet(user_score, computer_score):
+def writeExcelSheet(user_score, computer_score, username):
 
     #getting date and also the result of the game
     date = (str(datetime.datetime.now()).split("."))[0]
     result = ""
     if(user_score > computer_score):
-        result = "User won"
+        result = username + " won"
     elif(user_score == computer_score):
         result = "Draw"
     else:
-        result = "Computer won"
+        result = "nullPointer won"
 
     #checking if the excel file exists
     if(path.exists("score.xlsx")):
@@ -33,7 +33,7 @@ def writeExcelSheet(user_score, computer_score):
         sheet.cell(1,3).value = "UserScore"
         sheet.cell(1,4).value = "ComputerScore"
         wb.save("score.xlsx")
-        writeExcelSheet(user_score, computer_score)
+        writeExcelSheet(user_score, computer_score, username)
 
 
 def computerChoose():

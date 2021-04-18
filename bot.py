@@ -73,14 +73,20 @@ async def sayHello(ctx):
 async def sps(ctx):
     global user_score
     global computer_score
-
+    user_name = ""
+    
+    #Intro
     await ctx.send("Lets play stone paper scissor!!!")
     await ctx.send("Number of rounds?")
 
+    #check if the answer is valid
     def check(rounds_str):
         return rounds_str.author == ctx.author and rounds_str.channel == ctx.channel
     
     rounds_str = await client.wait_for("message", check=check)
+    
+    #Storing username
+    user_name = str(rounds_str.author).split('#')[0]
 
     rounds = 0
     try:
@@ -114,7 +120,7 @@ async def sps(ctx):
     await ctx.send("Competition over!")
     await ctx.send("SCOREBOARD")
     await ctx.send("```Your score = {}\nMy score = {}```".format(user_score, computer_score))
-    writeExcelSheet(user_score, computer_score)
+    writeExcelSheet(user_score, computer_score, user_name)
 
 @client.command(name="sps_hist")
 async def sps_histSend(ctx):
