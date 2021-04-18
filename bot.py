@@ -74,7 +74,7 @@ async def sps(ctx):
     global user_score
     global computer_score
 
-    await ctx.send("Lets place stone paper scissor!!!")
+    await ctx.send("Lets play stone paper scissor!!!")
     await ctx.send("Number of rounds?")
 
     def check(rounds_str):
