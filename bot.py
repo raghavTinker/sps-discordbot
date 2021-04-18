@@ -50,8 +50,6 @@ def compete(user, computer):
         
 
     else:
-        computer_score = computer_score + 1
-        user_score = user_score + 1
         return "Its a draw!"
 
 @client.command(name="ping")
