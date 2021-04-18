@@ -7,6 +7,11 @@
     d)use the OAuth2 link and add it to your discord server
     e)run the bot.py file
 
+### File significance
+    a)bot.py => contains all the command related functionality of the bot
+    b)sps.py => Some functions specific for stone paper scissors are kept here
+    c)score.xlsx => a file that records all the game scores 
+
 ### Bot commands:
 
 `&sps` starts a game of stone paper scissors<br>
