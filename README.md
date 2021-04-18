@@ -3,9 +3,11 @@
 ## Setup steps:
     a)install dependencies mentioned in requirements.txt
     b)create a bot/app in the discord developer platform
-    c)get the token from the platform and add it to a new file called `.env`
-    d)use the OAuth2 link and add it to your discord server
-    e)run the bot.py file
+    c)get the token from the platform
+    d)add the token to a new file called `.env` like this:
+       TOKEN=<TOKEN>
+    e)use the OAuth2 link and add add the bot to your discord server
+    f)run the bot.py file
 
 ### File significance
     a)bot.py => contains all the command related functionality of the bot
