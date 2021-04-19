@@ -73,28 +73,36 @@ async def sayHello(ctx):
 async def sps(ctx):
     global user_score
     global computer_score
+
+    #intro
     user_name = ""
-    
-    #Intro
     await ctx.send("Lets play stone paper scissor!!!")
     await ctx.send("Number of rounds?")
 
-    #check if the answer is valid
     def check(rounds_str):
         return rounds_str.author == ctx.author and rounds_str.channel == ctx.channel
+
+    #Timeout error
+    try:
+        rounds_str = await client.wait_for("message", check=check,timeout=30)
+
+    except asyncio.TimeoutError:
+        await ctx.send("You have not responded for 30s so quitting!")
+        return 
     
-    rounds_str = await client.wait_for("message", check=check)
-    
-    #Storing username
     user_name = str(rounds_str.author).split('#')[0]
 
+    #Making sure valid integer is given
     rounds = 0
     try:
         rounds = int(rounds_str.content)
     except:
-        await ctx.send("Enter a valid integer")
+        await ctx.send("Enter a valid integer\nEXIT!")
+        return
     
     count = 0
+    
+    #Reset scores
     user_score = 0
     computer_score = 0
 
@@ -104,10 +112,17 @@ async def sps(ctx):
         def checkOption(option):
             return option.author == ctx.author and option.channel == ctx.channel
         
-        option  = await client.wait_for("message", check=checkOption)
+        #Timeout error try catch
+        try:
+            option  = await client.wait_for("message", check=checkOption,timeout=30)
+        except asyncio.TimeoutError:
+            await ctx.send("You haven't responded. Exit!")
+            return
 
+        #Storing choice of computer
         computer_choice = computerChoose()
 
+        #If option valid send it to compete
         if option.content in options:
             result = compete(option.content, computer_choice)
             await ctx.send("```Your choice: {}\n My choice: {}```\n{}".format(option.content, computer_choice, result))
@@ -117,6 +132,7 @@ async def sps(ctx):
             await ctx.send("Retry!")
             pass
     
+    #Cleanup. Write excel sheet
     await ctx.send("Competition over!")
     await ctx.send("SCOREBOARD")
     await ctx.send("```Your score = {}\nMy score = {}```".format(user_score, computer_score))
