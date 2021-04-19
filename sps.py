@@ -22,7 +22,7 @@ def writeExcelSheet(user_score, computer_score, username):
     if(path.exists("score.xlsx")):
         work_book = openpyxl.load_workbook("score.xlsx")
         work_sheet = work_book.active
-        work_sheet.append([date, result, user_score, computer_score])
+        work_sheet.append([date, result, user_score, computer_score, username])
         work_book.save("score.xlsx")
     else:
         #if no then create one put the headings and recall this function
@@ -32,6 +32,7 @@ def writeExcelSheet(user_score, computer_score, username):
         sheet.cell(1,2).value = "Result"
         sheet.cell(1,3).value = "UserScore"
         sheet.cell(1,4).value = "ComputerScore"
+        sheet.cell(1,5).value = "Username"
         wb.save("score.xlsx")
         writeExcelSheet(user_score, computer_score, username)
 
