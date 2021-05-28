@@ -4,15 +4,15 @@
     a)install dependencies mentioned in requirements.txt
     b)create a bot/app in the discord developer platform
     c)get the token from the platform
-    d)add the TOKEN environment variable: ```$export TOKEN="YOUR TOKEN"```
+    d)add the TOKEN environment variable: $export TOKEN="YOUR TOKEN"
     e)use the OAuth2 link and add add the bot to your discord server
     f)run the bot.py file
     
     Note: To change the prefix from & to any other character create a the PREFIX environment variable
-    ```&export PREFIX='char'```
+        &export PREFIX='char'
 
 ## Execution:
-    ```python3 bot.py```
+    python3 bot.py
 
 ### File significance
     a)bot.py => contains all the command related functionality of the bot
