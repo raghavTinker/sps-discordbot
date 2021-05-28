@@ -11,6 +11,9 @@
     Note: To change the prefix from & to any other character create a the PREFIX environment variable
     ```&export PREFIX='char'```
 
+##Execution:
+    ```python3 bot.py```
+
 ### File significance
     a)bot.py => contains all the command related functionality of the bot
     b)sps.py => Some functions specific for stone paper scissors are kept here
