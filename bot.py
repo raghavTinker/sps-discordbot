@@ -8,7 +8,15 @@ from sps import writeExcelSheet
 
 options = ["scissors", "paper", "stone"]
 prefix = "&"
-client = commands.Bot(command_prefix=prefix, case_insensitive=True)
+
+#Prefix input
+try:
+    print(os.environ['PREFIX'])
+    prefix = str(os.environ['PREFIX'])
+except:
+    prefix = '&'
+
+client = commands.Bot(command_prefix=prefix, case_insensitive=True)    
 
 user_score = 0
 computer_score = 0
@@ -143,4 +151,12 @@ async def sps_histSend(ctx):
     await ctx.send("Here are all my game results till now")
     await ctx.send(file=discord.File("score.xlsx"))
 
-client.run(os.getenv('TOKEN'))
+token = ""
+
+#token input
+try:
+    print(os.environ['TOKEN'])
+    token = str(os.environ['TOKEN'])
+    client.run(token)
+except:
+    print("Invallid token")
