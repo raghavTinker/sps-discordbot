@@ -4,10 +4,12 @@
     a)install dependencies mentioned in requirements.txt
     b)create a bot/app in the discord developer platform
     c)get the token from the platform
-    d)add the token to a new file called `.env` like this:
-       TOKEN=<TOKEN>
+    d)add the TOKEN environment variable: ```$export TOKEN="YOUR TOKEN"```
     e)use the OAuth2 link and add add the bot to your discord server
     f)run the bot.py file
+    
+    Note: To change the prefix from & to any other character create a the PREFIX environment variable
+    ```&export PREFIX='char'```
 
 ### File significance
     a)bot.py => contains all the command related functionality of the bot
@@ -19,3 +21,9 @@
 `&sps` starts a game of stone paper scissors<br>
 `&sps_hist` excel file of all the games played by the bot<br>
 `&ping` ping in ms with the bot
+
+Please note if you have changed the prefix then use your respective character.
+
+
+### Its avaialable on Docker now!
+  https://hub.docker.com/repository/docker/raghavtinker/spsdiscordbot#
